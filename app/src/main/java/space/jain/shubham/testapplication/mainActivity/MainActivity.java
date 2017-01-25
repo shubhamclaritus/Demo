@@ -109,17 +109,20 @@ public class MainActivity extends AppCompatActivity implements GetResultListener
                     case HttpURLConnection.HTTP_BAD_REQUEST:
                         exception = jsonObject.getString("Exception");
                         reason = jsonObject.getString("Reason");
-                        stringBuilder.append("Exception : ").append(exception).append("\n").append("\n").append("Reason : ").append(reason).append("\n").append("\n");                        resultText.setText(stringBuilder);
+                        stringBuilder.append("Exception : ").append(exception).append("\n").append("\n").append("Reason : ").append(reason).append("\n").append("\n");
+                        resultText.setText(stringBuilder);
                         break;
                     case HttpURLConnection.HTTP_UNAUTHORIZED:
                         exception = jsonObject.getString("Exception");
                         reason = jsonObject.getString("Reason");
-                        stringBuilder.append("Exception : ").append(exception).append("\n").append("\n").append("Reason : ").append(reason).append("\n").append("\n");                        resultText.setText(stringBuilder);
+                        stringBuilder.append("Exception : ").append(exception).append("\n").append("\n").append("Reason : ").append(reason).append("\n").append("\n");
+                        resultText.setText(stringBuilder);
                         break;
                     case HttpURLConnection.HTTP_NOT_FOUND:
                         exception = jsonObject.getString("Exception");
                         reason = jsonObject.getString("Reason");
-                        stringBuilder.append("Exception : ").append(exception).append("\n").append("\n").append("Reason : ").append(reason).append("\n").append("\n");                        resultText.setText(stringBuilder);
+                        stringBuilder.append("Exception : ").append(exception).append("\n").append("\n").append("Reason : ").append(reason).append("\n").append("\n");
+                        resultText.setText(stringBuilder);
                         break;
                     case HttpURLConnection.HTTP_FORBIDDEN:
                         exception = jsonObject.getString("Exception");
