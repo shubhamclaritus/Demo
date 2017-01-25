@@ -67,8 +67,7 @@ public class MainActivity extends AppCompatActivity implements GetResultListener
     }
 
 
-    public void SendCallToServer(String method)
-    {
+    public void SendCallToServer(String method) {
         String api = "";
         if (HelperMethods.isNetworkAvailable(this)) {
             api = ApiList.Area + ApiList.AllPlaces + method;
@@ -83,10 +82,11 @@ public class MainActivity extends AppCompatActivity implements GetResultListener
             HelperMethods.showToastS(this, "Internet Connection Is not Working");
         }
     }
+
     /**
-     * @param result  contain the json of the called url
-     * @param urlFrom is indicator that result is fetched for given url
-     * @param  isSuccess define the api successfully execution status
+     * @param result    contain the json of the called url
+     * @param urlFrom   is indicator that result is fetched for given url
+     * @param isSuccess define the api successfully execution status
      */
 
     @Override
@@ -127,7 +127,8 @@ public class MainActivity extends AppCompatActivity implements GetResultListener
                     case HttpURLConnection.HTTP_FORBIDDEN:
                         exception = jsonObject.getString("Exception");
                         reason = jsonObject.getString("Reason");
-                        stringBuilder.append("Exception : ").append(exception).append("\n").append("\n").append("Reason : ").append(reason).append("\n").append("\n");                        resultText.setText(stringBuilder);
+                        stringBuilder.append("Exception : ").append(exception).append("\n").append("\n").append("Reason : ").append(reason).append("\n").append("\n");
+                        resultText.setText(stringBuilder);
                         break;
                 }
             } catch (JSONException e) {
