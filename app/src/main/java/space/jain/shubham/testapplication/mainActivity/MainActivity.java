@@ -50,25 +50,25 @@ public class MainActivity extends AppCompatActivity implements GetResultListener
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.getButton:
-                SendCallToServer(AppConstant.GET);
+                sendCallToServer(AppConstant.GET);
                 break;
             case R.id.postButton:
-                SendCallToServer(AppConstant.POST);
+                sendCallToServer(AppConstant.POST);
                 break;
             case R.id.putButton:
 
-                SendCallToServer(AppConstant.PUT);
+                sendCallToServer(AppConstant.PUT);
                 break;
             case R.id.deleteButton:
-                SendCallToServer(AppConstant.DELETE);
+                sendCallToServer(AppConstant.DELETE);
 
                 break;
         }
     }
 
 
-    public void SendCallToServer(String method) {
-        String api = "";
+    public void sendCallToServer(String method) {
+        String api;
         if (HelperMethods.isNetworkAvailable(this)) {
             api = ApiList.Area + ApiList.AllPlaces + method;
             JSONObject jsonObject = new JSONObject();
