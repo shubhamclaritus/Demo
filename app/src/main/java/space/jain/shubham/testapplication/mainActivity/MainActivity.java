@@ -50,68 +50,39 @@ public class MainActivity extends AppCompatActivity implements GetResultListener
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.getButton:
-                String api = "";
-                if (HelperMethods.isNetworkAvailable(this)) {
-                    api = ApiList.Area + ApiList.AllPlaces + AppConstant.GET;
-                    JSONObject jsonObject = new JSONObject();
-                    try {
-                        jsonObject.put("time", "");
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
-                    CustomVolleyRequest.getInstance(this).setJsonRequest_POST(this, null, api, jsonObject, new HashMap<String, String>());
-                } else {
-                    HelperMethods.showToastS(this, "Internet Connection Is not Working");
-                }
+                SendCallToServer(AppConstant.GET);
                 break;
             case R.id.postButton:
-
-                if (HelperMethods.isNetworkAvailable(this)) {
-                    api = ApiList.Area + ApiList.AllPlaces + AppConstant.POST;
-                    JSONObject jsonObject = new JSONObject();
-                    try {
-                        jsonObject.put("time", "");
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
-                    CustomVolleyRequest.getInstance(this).setJsonRequest_POST(this, null, api, jsonObject, new HashMap<String, String>());
-                } else {
-                    HelperMethods.showToastS(this, "Internet Connection Is not Working");
-                }
+                SendCallToServer(AppConstant.POST);
                 break;
             case R.id.putButton:
 
-                if (HelperMethods.isNetworkAvailable(this)) {
-                    api = ApiList.Area + ApiList.AllPlaces + AppConstant.PUT;
-                    JSONObject jsonObject = new JSONObject();
-                    try {
-                        jsonObject.put("time", "");
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
-                    CustomVolleyRequest.getInstance(this).setJsonRequest_POST(this, null, api, jsonObject, new HashMap<String, String>());
-                } else {
-                    HelperMethods.showToastS(this, "Internet Connection Is not Working");
-                }
+                SendCallToServer(AppConstant.PUT);
                 break;
             case R.id.deleteButton:
+                SendCallToServer(AppConstant.DELETE);
 
-                if (HelperMethods.isNetworkAvailable(this)) {
-                    api = ApiList.Area + ApiList.AllPlaces + AppConstant.DELETE;
-                    JSONObject jsonObject = new JSONObject();
-                    try {
-                        jsonObject.put("time", "");
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
-                    CustomVolleyRequest.getInstance(this).setJsonRequest_POST(this, null, api, jsonObject, new HashMap<String, String>());
-                } else {
-                    HelperMethods.showToastS(this, "Internet Connection Is not Working");
-                }
                 break;
         }
     }
 
+
+    public void SendCallToServer(String method)
+    {
+        String api = "";
+        if (HelperMethods.isNetworkAvailable(this)) {
+            api = ApiList.Area + ApiList.AllPlaces + method;
+            JSONObject jsonObject = new JSONObject();
+            try {
+                jsonObject.put("time", "");
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            CustomVolleyRequest.getInstance(this).setJsonRequest_POST(this, null, api, jsonObject, new HashMap<String, String>());
+        } else {
+            HelperMethods.showToastS(this, "Internet Connection Is not Working");
+        }
+    }
     /**
      * @param result  contain the json of the called url
      * @param urlFrom is indicator that result is fetched for given url

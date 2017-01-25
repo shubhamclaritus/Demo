@@ -47,7 +47,7 @@ public class CustomVolleyRequest {
     static CustomVolleyRequest customVolleyRequest;
     private Context context;
     private RequestQueue requestQueue;
-    private ImageLoader imageLoader;
+
     private GetResultListener callback;
     private ProgressDialog dialog;
 
@@ -55,23 +55,7 @@ public class CustomVolleyRequest {
         this.context = context;
         this.requestQueue = getRequestQueue();
 
-        //enable SSL Connection if required
-        HttpsTrustManager.allowAllSSL();
-        imageLoader = new ImageLoader(requestQueue,
-                new ImageLoader.ImageCache() {
-                    private final LruCache<String, Bitmap>
-                            cache = new LruCache<>(20);
 
-                    @Override
-                    public Bitmap getBitmap(String url) {
-                        return cache.get(url);
-                    }
-
-                    @Override
-                    public void putBitmap(String url, Bitmap bitmap) {
-                        cache.put(url, bitmap);
-                    }
-                });
     }
     /**
      * create the single object of volley instance
@@ -98,9 +82,6 @@ public class CustomVolleyRequest {
         return requestQueue;
     }
 
-    public ImageLoader getImageLoader() {
-        return imageLoader;
-    }
 
     /**
      * @param activity get current activity context to show the progress dialog
